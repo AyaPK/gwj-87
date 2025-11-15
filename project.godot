@@ -15,6 +15,10 @@ run/main_scene="uid://jq37tdmbp8lk"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LightManager="*res://00_globals/light_manager.gd"
+
 [input]
 
 ui_left={
@@ -37,7 +41,8 @@ ui_right={
 [layer_names]
 
 2d_physics/layer_1="Player"
-2d_physics/layer_2="Walls"
+2d_physics/layer_2="solid walls"
+2d_physics/layer_3="transparent walls"
 
 [rendering]
 

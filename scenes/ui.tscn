@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwoo3dnk3u7hw"]
+
+[ext_resource type="Script" uid="uid://cdf7dmsy51us0" path="res://scripts/ui.gd" id="1_nt7q6"]
+[ext_resource type="Texture2D" uid="uid://bpjf0co4iue27" path="res://assets/progress_bar_base_under.png" id="2_gdt2y"]
+[ext_resource type="Texture2D" uid="uid://c7mi5fhdt6ptt" path="res://assets/progress_bar_base_over.png" id="2_yev5y"]
+[ext_resource type="Texture2D" uid="uid://ckj82u7mbrfr8" path="res://assets/progress_bar_base.png" id="3_gdt2y"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_nt7q6")
+
+[node name="LightMeter" type="TextureProgressBar" parent="."]
+offset_left = 268.0
+offset_top = 606.0
+offset_right = 908.0
+offset_bottom = 646.0
+max_value = 500.0
+value = 50.0
+texture_under = ExtResource("2_gdt2y")
+texture_over = ExtResource("2_yev5y")
+texture_progress = ExtResource("3_gdt2y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -25.0
+offset_top = -10.0
+offset_right = 1173.0
+offset_bottom = 666.0
+color = Color(0, 0, 0, 0)

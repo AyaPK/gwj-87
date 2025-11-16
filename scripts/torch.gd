@@ -1,7 +1,10 @@
 extends PointLight2D
 
+@export var scaling: float = 1
+
 func _ready() -> void:
-	pass
+	scale.x = scaling
+	scale.y = scaling
 
 func _process(_delta: float) -> void:
 	pass

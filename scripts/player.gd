@@ -13,21 +13,26 @@ const MAX_POINT_LIGHT_DISTANCE := 40.0
 @onready var light_ray_up: RayCast2D = $LightRayUp
 @onready var light_ray_down: RayCast2D = $LightRayDown
 
+var accepting_input: bool = false
+
 func _ready() -> void:
 	LightManager.player = self
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	if accepting_input:
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+		
+		if Input.is_action_just_pressed("crouch") and is_on_floor():
+			LevelManager.player_entering.emit()
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	var direction := Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		var direction := Input.get_axis("move_left", "move_right")
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 	update_animation()
 	move_and_slide()
 
@@ -103,8 +108,8 @@ func _check_point_light(light: Node) -> bool:
 	var plight: PointLight2D = light as PointLight2D
 	if plight == null:
 		return false
-	var lp: Vector2 = plight.global_position
 	var effective_radius: float = _compute_point_light_radius(plight)
+	var lp: Vector2 = plight.global_position
 	if global_position.distance_to(lp) > effective_radius:
 		return false
 	var space := get_world_2d().direct_space_state
@@ -123,7 +128,7 @@ func _check_point_light(light: Node) -> bool:
 
 func _compute_point_light_radius(plight: PointLight2D) -> float:
 	var tex: Texture2D = plight.texture
-	var base: float = 64.0
+	var base: float = 32.0
 	if tex != null:
 		base = float(max(tex.get_width(), tex.get_height())) * 0.5
 	var gscale: Vector2 = plight.global_transform.get_scale().abs()

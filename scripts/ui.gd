@@ -16,7 +16,11 @@ func _ready() -> void:
 	LightManager.ui = self
 	reset_meter()
 	node_end.emitting = true
-	pass
+	color_rect.color.a = 1
+	fading = true
+	fade_in()
+	await fade_in_complete
+	LightManager.player.accepting_input = true
 
 func _process(_delta: float) -> void:
 	node_end.global_position = Vector2(light_meter.global_position.x+(light_meter.value*1.28), light_meter.global_position.y)
@@ -44,7 +48,7 @@ func stop_emit_particles() -> void:
 func fade_out() -> void:
 	fading = true
 	while true:
-		color_rect.color.a = move_toward(color_rect.color.a, 1, 0.05)
+		color_rect.color.a = move_toward(color_rect.color.a, 1, 0.02)
 		if color_rect.color.a == 1:
 			fade_out_complete.emit()
 			break
@@ -53,7 +57,7 @@ func fade_out() -> void:
 func fade_in() -> void:
 	fading = true
 	while true:
-		color_rect.color.a = move_toward(color_rect.color.a, 0, 0.05)
+		color_rect.color.a = move_toward(color_rect.color.a, 0, 0.02)
 		if color_rect.color.a == 0:
 			fade_in_complete.emit()
 			fading = false

@@ -152,7 +152,7 @@ speed = 5
 curve = SubResource("Curve2D_4bqqs")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("7_q5upp")]
-position = Vector2(515, -106)
+position = Vector2(241, -94)
 
 [node name="Doorway" parent="." instance=ExtResource("7_1sl2t")]
 position = Vector2(215, -48)

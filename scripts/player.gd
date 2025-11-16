@@ -102,15 +102,14 @@ func _check_directional_light(light: DirectionalLight2D) -> bool:
 		ray.force_raycast_update()
 		if not ray.is_colliding():
 			clear_count += 1
-	return clear_count >= 1
+	return clear_count >= 2
 
 func _check_point_light(light: Node) -> bool:
 	var plight: PointLight2D = light as PointLight2D
 	if plight == null:
 		return false
-	var effective_radius: float = _compute_point_light_radius(plight)
 	var lp: Vector2 = plight.global_position
-	if global_position.distance_to(lp) > effective_radius:
+	if not _point_light_contains(plight, global_position):
 		return false
 	var space := get_world_2d().direct_space_state
 	var points := [
@@ -118,7 +117,6 @@ func _check_point_light(light: Node) -> bool:
 		global_position + Vector2(0, -8),
 		global_position + Vector2(0, -16)
 	]
-	
 	var mask := 1 << 1
 	for p in points:
 		var result := space.intersect_ray(PhysicsRayQueryParameters2D.create(p, lp, mask))
@@ -126,11 +124,15 @@ func _check_point_light(light: Node) -> bool:
 			return true
 	return false
 
-func _compute_point_light_radius(plight: PointLight2D) -> float:
+func _point_light_contains(plight: PointLight2D, world_point: Vector2) -> bool:
 	var tex: Texture2D = plight.texture
-	var base: float = 32.0
-	if tex != null:
-		base = float(max(tex.get_width(), tex.get_height())) * 0.5
-	var gscale: Vector2 = plight.global_transform.get_scale().abs()
-	var scale_factor: float = max(gscale.x, gscale.y)
-	return base * plight.texture_scale * scale_factor
+	if tex == null:
+		return true
+	var p_local: Vector2 = plight.to_local(world_point)
+	var w2: float = float(tex.get_width()) * 0.65 * plight.texture_scale
+	var h2: float = float(tex.get_height()) * 0.65 * plight.texture_scale
+	if w2 <= 0.0 or h2 <= 0.0:
+		return false
+	var nx: float = p_local.x / w2
+	var ny: float = p_local.y / h2
+	return (nx * nx + ny * ny) <= 1.0

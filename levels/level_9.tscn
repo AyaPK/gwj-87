@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://chlrywimn7vlx" path="res://scenes/star_pickup.tscn" id="8_5ejc1"]
 [ext_resource type="PackedScene" uid="uid://ct1jiahn013vu" path="res://scenes/torch.tscn" id="10_yewj5"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mckh2"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x8804"]
 texture = ExtResource("2_a4lof")
 1:0/0 = 0
 2:0/0 = 0
@@ -121,7 +121,7 @@ texture = ExtResource("2_a4lof")
 0:9/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_81a5f"]
-sources/0 = SubResource("TileSetAtlasSource_mckh2")
+sources/0 = SubResource("TileSetAtlasSource_x8804")
 
 [sub_resource type="Curve2D" id="Curve2D_fxq3v"]
 _data = {

@@ -17,6 +17,7 @@ func _ready() -> void:
 	if LevelManager.got_pickup and star_pickup:
 		star_pickup.queue_free()
 		Ui.mark_star_complete()
+	Ui.play_level_music()
 
 func _process(_delta: float) -> void:
 	#$DirectionalLight2D.rotation += 0.001

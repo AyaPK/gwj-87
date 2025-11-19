@@ -20,6 +20,7 @@ func _ready() -> void:
 			level_button.level_button.modulate = Color(0.565, 0.894, 0.518, 0.722)
 		else:
 			level_button.level_button.modulate = Color(0.962, 0.736, 0.681, 0.722)
+	Ui.play_hello_world()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

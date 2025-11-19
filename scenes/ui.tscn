@@ -101,3 +101,5 @@ process_material = SubResource("ParticleProcessMaterial_gdt2y")
 position = Vector2(223, 613)
 scale = Vector2(4, 4)
 texture = ExtResource("5_wm3ai")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

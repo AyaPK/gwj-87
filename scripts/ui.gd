@@ -15,6 +15,8 @@ signal fade_in_complete
 
 const STAR = preload("uid://by5fvda33f248")
 const STAR_TRANSPARENT = preload("uid://bf16xm8cpl5iq")
+const HELLO_WORLD = preload("uid://ci4ehvgpc7lil")
+const SHADOW = preload("uid://d2uln3drsxl7c")
 
 func _ready() -> void:
 	$LightMeter.hide()
@@ -87,3 +89,12 @@ func mark_star_incomplete() -> void:
 
 func mark_star_complete() -> void:
 	star_sprite.texture = STAR
+
+func play_hello_world() -> void:
+	$AudioStreamPlayer.stream = HELLO_WORLD
+	$AudioStreamPlayer.play()
+
+func play_level_music() -> void:
+	if $AudioStreamPlayer.stream != SHADOW:
+		$AudioStreamPlayer.stream = SHADOW
+		$AudioStreamPlayer.play()

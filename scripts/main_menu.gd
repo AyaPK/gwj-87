@@ -14,6 +14,7 @@ func _ready() -> void:
 	$CanvasLayer/AudioBG.hide()
 	$CanvasLayer/SettingsContainer.hide()
 	$CanvasLayer/StartButton.show()
+	$MainLogo.show()
 	$CanvasLayer/StartButton.grab_focus()
 	for level in SaveManager.data:
 		var level_button: LevelButtonContainer = LEVEL_BUTTON.instantiate()
@@ -43,12 +44,14 @@ func _on_level_select_back_button_pressed() -> void:
 	$CanvasLayer/AudioBG.hide()
 	$CanvasLayer/SettingsContainer.hide()
 	$CanvasLayer/StartButton.show()
+	$MainLogo.show()
 
 func _on_level_select_button_pressed() -> void:
 	$"CanvasLayer/Main Buttons".hide()
 	$CanvasLayer/LevelSelectBackButton.show()
 	$CanvasLayer/LevelButtonContainer.show()
 	$CanvasLayer/StartButton.hide()
+	$MainLogo.hide()
 
 func _on_settings_button_pressed() -> void:
 	$"CanvasLayer/Main Buttons".hide()
@@ -56,6 +59,7 @@ func _on_settings_button_pressed() -> void:
 	$CanvasLayer/AudioBG.show()
 	$CanvasLayer/SettingsContainer.show()
 	$CanvasLayer/StartButton.hide()
+	$MainLogo.hide()
 
 func _on_sfxcheck_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(2, toggled_on)

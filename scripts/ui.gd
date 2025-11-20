@@ -162,3 +162,13 @@ func stop_footsteps() -> void:
 
 func play_jump() -> void:
 	$JumpSFX.play()
+
+func play_star_pickup() -> void:
+	$StarPickup.play()
+
+func play_block() -> void:
+	if !$BlockPushSFX.playing:
+		$BlockPushSFX.play()
+
+func stop_block() -> void:
+	$BlockPushSFX.stop()

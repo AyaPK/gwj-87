@@ -37,13 +37,11 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collision_object = collision.get_collider()
 		if collision_object.is_in_group("pushables") and abs(collision_object.get_linear_velocity().x) < MAX_VELOCITY:
 			collision_object.apply_central_impulse(collision.get_normal() * -PUSH_FORCE)
-	
 	update_animation()
 	move_and_slide()
 

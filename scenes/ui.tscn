@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cwoo3dnk3u7hw"]
+[gd_scene load_steps=21 format=3 uid="uid://cwoo3dnk3u7hw"]
 
 [ext_resource type="Script" uid="uid://cdf7dmsy51us0" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="Texture2D" uid="uid://bpjf0co4iue27" path="res://assets/progress_bar_base_under.png" id="2_gdt2y"]
@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://cekc4pj011vr8" path="res://fonts/m5x7.ttf" id="6_cgfq5"]
 [ext_resource type="AudioStream" uid="uid://c1mxwxw5g8ryk" path="res://assets/sfx/step.wav" id="7_p7vwb"]
 [ext_resource type="AudioStream" uid="uid://bkdi0frdvpmfx" path="res://assets/sfx/jump.wav" id="8_ktti3"]
+[ext_resource type="AudioStream" uid="uid://c5cvijfm46ok1" path="res://assets/sfx/pickup.wav" id="10_7dvkv"]
+[ext_resource type="AudioStream" uid="uid://c448elyys68rn" path="res://assets/sfx/stonepush.wav" id="11_vdcm2"]
 
 [sub_resource type="Animation" id="Animation_8dubc"]
 length = 0.001
@@ -210,4 +212,15 @@ bus = &"SFX"
 stream = ExtResource("8_ktti3")
 volume_db = -15.0
 pitch_scale = 0.85
+bus = &"SFX"
+
+[node name="StarPickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_7dvkv")
+volume_db = 8.0
+bus = &"SFX"
+
+[node name="BlockPushSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_vdcm2")
+volume_db = -5.0
+pitch_scale = 0.87
 bus = &"SFX"

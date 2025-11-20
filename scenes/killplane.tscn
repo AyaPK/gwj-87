@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8luytuk6svvq"]
+
+[ext_resource type="Script" uid="uid://dcm005p6a2p4i" path="res://scripts/killplane.gd" id="1_v5mny"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_celpr"]
+size = Vector2(1162, 34)
+
+[node name="KillPlane" type="Area2D"]
+script = ExtResource("1_v5mny")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(571, 7)
+shape = SubResource("RectangleShape2D_celpr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

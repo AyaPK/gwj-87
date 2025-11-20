@@ -2,6 +2,8 @@ extends RigidBody2D
 
 @onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
 var start_pos: Vector2
+var grounded: bool = false
+var _sfx_check_timer: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,8 +16,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func _physics_process(delta: float) -> void:
+	_sfx_check_timer += delta
+	if _sfx_check_timer >= 0.05:
+		_sfx_check_timer = 0.0
+		if abs(linear_velocity.x) > 2.0:
+			if LightManager.ui:
+				LightManager.ui.play_block()
+		else:
+			if LightManager.ui:
+				LightManager.ui.stop_block()
+
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	var grounded := false
+	grounded = false
 	var contact_count := state.get_contact_count()
 	for i in range(contact_count):
 		var n := state.get_contact_local_normal(i)

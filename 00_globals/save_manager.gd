@@ -2,7 +2,7 @@ extends Node
  
  
 const SAVE_PATH: String = "user://save.json"
-const LEVEL_COUNT: int = 10
+const LEVEL_COUNT: int = 11
 var data: Dictionary = {}
 
 signal saved

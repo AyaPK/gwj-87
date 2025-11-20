@@ -14,7 +14,7 @@ config/name="GWJ-87"
 run/main_scene="uid://b6e750ih3emol"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/image="uid://c76s5rfx0cp1y"
-config/icon="res://icon.svg"
+config/icon="uid://bm66xmddf7mnd"
 
 [autoload]
 

@@ -128,9 +128,6 @@ script = ExtResource("1_lh5ve")
 level_number = 10
 light_intensity = null
 star_pickup = NodePath("StarPickup")
-intro_text = "Ancient machines stir at your presence, obedient to ghosts.
-
-They shift as though they still recognize a master."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

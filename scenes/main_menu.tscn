@@ -416,6 +416,19 @@ theme_override_fonts/font = ExtResource("1_wu84c")
 theme_override_font_sizes/font_size = 40
 text = "Aya, Alex Avery"
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/CreditsArea/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/CreditsArea/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 10
+text = " "
+
 [node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/CreditsArea/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -427,8 +440,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_wu84c")
 theme_override_font_sizes/font_size = 40
-text = "
-Thank you to my
+text = "Thank you to my
 incredible playtesters:"
 horizontal_alignment = 1
 
@@ -443,7 +455,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_wu84c")
 theme_override_font_sizes/font_size = 40
-text = "Kiran, Olly, Freya, Blazin2180"
+text = "Kiran, Olly, Freya, Blazin2180,
+James Nye, Pigeon"
 horizontal_alignment = 1
 
 [node name="CreditsLabel" type="Label" parent="CanvasLayer/CreditsArea"]

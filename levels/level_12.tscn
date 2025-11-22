@@ -150,7 +150,7 @@ tile_map_data = PackedByteArray("AAD+/wMAAAAAAAQAAAD+/wQAAAAAAAQAAAD//wMAAAAAAAQ
 tile_set = SubResource("TileSet_vko6h")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="ParallaxLayer"]
-tile_map_data = PackedByteArray("AAAhAP//AAAEAAkAAAAiAP//AAAFAAkAAAAhAAAAAAACAAgAAAAiAAAAAAADAAgAAAAjAAAAAAAEAAgAAAA=")
+tile_map_data = PackedByteArray("AAAhAP//AAAEAAkAAAAiAP//AAAFAAkAAAAhAAAAAAACAAgAAAAiAAAAAAADAAgAAAAjAAAAAAAEAAgAAAAnAP//AAACAAcAAAAoAP//AAADAAcAAAApAP//AAAGAAkAAAAqAP//AAAGAAkAAAA=")
 tile_set = ExtResource("3_s0koc")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

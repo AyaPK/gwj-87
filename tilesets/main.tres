@@ -950,6 +950,7 @@ texture = ExtResource("1_rjpry")
 2:10/0 = 0
 4:9/0 = 0
 5:9/0 = 0
+6:9/0 = 0
 
 [resource]
 occlusion_layer_0/light_mask = 1

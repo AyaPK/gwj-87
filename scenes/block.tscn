@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcqyw163gmi76"]
+[gd_scene load_steps=8 format=3 uid="uid://dcqyw163gmi76"]
 
 [ext_resource type="Texture2D" uid="uid://d2vt6ib6jxsk3" path="res://assets/art/box.png" id="1_8r6n6"]
 [ext_resource type="Script" uid="uid://2aln7b3ny53j" path="res://scripts/block.gd" id="1_cgrg5"]
@@ -12,6 +12,13 @@ polygon = PackedVector2Array(157, 12, 169, 12, 170, 13, 170, 26, 169, 27, 157, 2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgrg5"]
 size = Vector2(16, 2)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgrg5"]
+radius = 6.0
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kun4"]
+size = Vector2(12, 14)
+
 [node name="Block2" type="RigidBody2D" groups=["pushables"]]
 collision_layer = 7
 collision_mask = 7
@@ -24,9 +31,6 @@ script = ExtResource("1_cgrg5")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8r6n6")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-4, -8, 5, -8, 6, -6, 6, 6, 1, 8, -1, 8, -6, 6, -6, -6)
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(-163, -19)
 occluder = SubResource("OccluderPolygon2D_tfamw")
@@ -36,3 +40,10 @@ position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_cgrg5")
 target_position = Vector2(0, 1)
 collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_cgrg5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_4kun4")

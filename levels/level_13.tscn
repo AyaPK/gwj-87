@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dgy4dnvs04rl"]
+[gd_scene load_steps=12 format=4 uid="uid://bvrrenwsypkhc"]
 
 [ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scripts/level.gd" id="1_hgva4"]
 [ext_resource type="Texture2D" uid="uid://dqwpjooi41m8c" path="res://assets/art/tileset.png" id="2_ielki"]
@@ -131,11 +131,8 @@ point_count = 4
 
 [node name="Level12" type="Node2D"]
 script = ExtResource("1_hgva4")
-level_number = 12
+level_number = 13
 light_intensity = null
-intro_text = "The land flickers as if remembering itself...
-
-Its shapes whispering a story you can almost recognise."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

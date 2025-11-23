@@ -9,6 +9,7 @@ const PLAYER = preload("uid://gcebunfbf7wo")
 func _ready() -> void:
 	var player: Player = PLAYER.instantiate()
 	player.global_position = player_spawn.global_position
+	print(light_intensity)
 	LightManager.light_intensity = light_intensity
 	add_child(player)
 	LevelManager.current_level = level_number

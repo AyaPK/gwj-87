@@ -129,10 +129,11 @@ _data = {
 }
 point_count = 4
 
-[node name="Level12" type="Node2D"]
+[node name="Level12" type="Node2D" node_paths=PackedStringArray("star_pickup")]
 script = ExtResource("1_hgva4")
 level_number = 13
 light_intensity = null
+star_pickup = NodePath("StarPickup")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

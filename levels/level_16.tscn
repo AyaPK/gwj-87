@@ -121,10 +121,11 @@ texture = ExtResource("2_iik42")
 [sub_resource type="TileSet" id="TileSet_vko6h"]
 sources/0 = SubResource("TileSetAtlasSource_lxcpb")
 
-[node name="Level12" type="Node2D"]
+[node name="Level12" type="Node2D" node_paths=PackedStringArray("star_pickup")]
 script = ExtResource("1_5whav")
 level_number = 16
 light_intensity = 0.0
+star_pickup = NodePath("StarPickup")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

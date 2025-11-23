@@ -133,9 +133,6 @@ point_count = 3
 script = ExtResource("1_hokjj")
 level_number = 4
 star_pickup = NodePath("StarPickup")
-intro_text = "Light has carved scars across this unrecogniseable land.
-
-Yet something about these ruins feels intimately familiar."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

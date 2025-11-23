@@ -32,7 +32,7 @@ In their reflections, you see shapes that are not yours.",
 You do not know why they yield, only that they always have.",
 "Ancient machines stir at your presence, obedient to ghosts.
 
-They shift as though they still recognize a master.",
+They shift as though they still recognise a master.",
 "You feel the world thinning around you.
 
 Even the shadows grow weary under the unending glare.",
@@ -49,10 +49,9 @@ Something buried beneath the brightness still breathes.",
 
 You begin to remember home.",
 "This level hasn't been made yet...",
-"Neither has this one,
+"At the world's final threshold, the light softens. It's almost gentle.
 
-But it is the final stage...
-Thank you for playing!"
+You step forward, carrying a story that you don't fully recall..."
 ]
 
 @warning_ignore("unused_signal")

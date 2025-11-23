@@ -13,6 +13,7 @@ extends CanvasLayer
 var fading: bool = false
 var rumble_tween: Tween
 var rumble_base_db: float = 12.0
+var is_paused: bool = false
 
 signal fade_out_complete
 signal fade_in_complete
@@ -27,6 +28,7 @@ func _ready() -> void:
 	$ColorRect.hide()
 	$StarSprite.hide()
 	$IntroOverlay.hide()
+	$PauseMenu.hide()
 	rumble_base_db = $RumbleSFX.volume_db
 
 func set_up() -> void:
@@ -35,10 +37,13 @@ func set_up() -> void:
 	$StarSprite.show()
 	LightManager.ui = self
 	reset_meter()
-	node_end.emitting = true
 	color_rect.color.a = 1
 	fading = true
 	LevelManager.reset_level.connect(reset_light)
+
+func tear_down() -> void:
+	$LightMeter.hide()
+	$StarSprite.hide()
 
 func show_intro(text: String, duration: float = 5.0, skip_if_complete: bool = true) -> void:
 	var should_skip := false
@@ -78,6 +83,24 @@ func _process(_delta: float) -> void:
 	node_end_3.global_position = Vector2(light_meter.global_position.x+(light_meter.value*1.28), light_meter.global_position.y+20)
 	if light_meter.value == 0:
 		LevelManager.reset_level.emit()
+	
+	if Input.is_action_just_pressed("Pause"):
+		if is_paused:
+			hide_pause_menu()
+		else:
+			show_pause_menu()
+
+func show_pause_menu() -> void:
+	$PauseMenu.show()
+	stop_footsteps()
+	stop_rumble()
+	is_paused = true
+	LevelManager.level_object.process_mode = Node.PROCESS_MODE_DISABLED
+
+func hide_pause_menu() -> void:
+	$PauseMenu.hide()
+	is_paused = false
+	LevelManager.level_object.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _physics_process(_delta: float) -> void:
 	if not fading:
@@ -165,3 +188,23 @@ func play_jump() -> void:
 
 func play_star_pickup() -> void:
 	$StarPickup.play()
+
+func _on_restart_button_pressed() -> void:
+	hide_pause_menu()
+	LevelManager.reset_level.emit()
+
+func _on_exit_button_pressed() -> void:
+	$PauseMenu.hide()
+	LightManager.player.accepting_input = false
+	LightManager.player.velocity = Vector2.ZERO
+	tear_down()
+	node_end.emitting = false
+	node_end_2.emitting = false
+	node_end_3.emitting = false
+	Ui.fade_out()
+	await Ui.fade_out_complete
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	Ui.fade_in()
+
+func _on_back_button_pressed() -> void:
+	hide_pause_menu()

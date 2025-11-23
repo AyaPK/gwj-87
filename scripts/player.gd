@@ -52,6 +52,9 @@ func _physics_process(delta: float) -> void:
 		_light_check_accum = 0.0
 		_update_light_state()
 	
+	if !accepting_input:
+		is_lit = false
+	
 	if !is_lit:
 		LightManager.increase_light_meter()
 	else:

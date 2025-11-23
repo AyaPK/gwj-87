@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cwoo3dnk3u7hw"]
+[gd_scene load_steps=28 format=3 uid="uid://cwoo3dnk3u7hw"]
 
 [ext_resource type="Script" uid="uid://cdf7dmsy51us0" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="Texture2D" uid="uid://bpjf0co4iue27" path="res://assets/progress_bar_base_under.png" id="2_gdt2y"]
@@ -10,6 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://c1mxwxw5g8ryk" path="res://assets/sfx/step.wav" id="7_p7vwb"]
 [ext_resource type="AudioStream" uid="uid://bkdi0frdvpmfx" path="res://assets/sfx/jump.wav" id="8_ktti3"]
 [ext_resource type="AudioStream" uid="uid://c5cvijfm46ok1" path="res://assets/sfx/pickup.wav" id="10_7dvkv"]
+[ext_resource type="Texture2D" uid="uid://ccsu7fba17idd" path="res://assets/art/creditspanel.png" id="11_vdcm2"]
+[ext_resource type="Texture2D" uid="uid://cltit6273e3iu" path="res://assets/button_normal.png" id="12_qsv74"]
+[ext_resource type="Texture2D" uid="uid://bmumu1mlbyxbd" path="res://assets/button_clickedl.png" id="13_h1mc3"]
+[ext_resource type="Texture2D" uid="uid://b4ri7v3221ie5" path="res://assets/button_hoveredl.png" id="14_cof4p"]
 
 [sub_resource type="Animation" id="Animation_8dubc"]
 length = 0.001
@@ -118,6 +122,29 @@ _data = {
 &"fade_out": SubResource("Animation_vdcm2")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f7tlh"]
+texture = ExtResource("12_qsv74")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8k7j3"]
+texture = ExtResource("13_h1mc3")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jkdwc"]
+texture = ExtResource("14_cof4p")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rlppe"]
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_nt7q6")
 
@@ -217,3 +244,66 @@ bus = &"SFX"
 stream = ExtResource("10_7dvkv")
 volume_db = 8.0
 bus = &"SFX"
+
+[node name="PauseMenu" type="TextureRect" parent="."]
+offset_left = 314.0
+offset_top = 88.0
+offset_right = 450.0
+offset_bottom = 168.0
+scale = Vector2(4, 4)
+texture = ExtResource("11_vdcm2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 21.25
+offset_top = 10.0
+offset_right = 397.25
+offset_bottom = 246.0
+scale = Vector2(0.25, 0.25)
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_cgfq5")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxTexture_f7tlh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8k7j3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jkdwc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rlppe")
+text = "Restart Level"
+
+[node name="ExitButton" type="Button" parent="PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_cgfq5")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxTexture_f7tlh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8k7j3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jkdwc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rlppe")
+text = "Exit To Menu"
+
+[node name="Label" type="Label" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_cgfq5")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxTexture_f7tlh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8k7j3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jkdwc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rlppe")
+text = "<-- Back to game"
+
+[connection signal="pressed" from="PauseMenu/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

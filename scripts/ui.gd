@@ -39,7 +39,8 @@ func set_up() -> void:
 	reset_meter()
 	color_rect.color.a = 1
 	fading = true
-	LevelManager.reset_level.connect(reset_light)
+	if !LevelManager.reset_level.is_connected(reset_light):
+		LevelManager.reset_level.connect(reset_light)
 
 func tear_down() -> void:
 	$LightMeter.hide()
@@ -84,11 +85,12 @@ func _process(_delta: float) -> void:
 	if light_meter.value == 0:
 		LevelManager.reset_level.emit()
 	
-	if Input.is_action_just_pressed("Pause"):
+	if Input.is_action_just_pressed("Pause") and LevelManager.level_object:
 		if is_paused:
 			hide_pause_menu()
 		else:
-			show_pause_menu()
+			if LightManager.player.accepting_input:
+				show_pause_menu()
 
 func show_pause_menu() -> void:
 	$PauseMenu.show()
